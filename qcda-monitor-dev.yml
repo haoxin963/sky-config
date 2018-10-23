@@ -1,0 +1,15 @@
+server:
+  port: 5001
+
+spring:
+  boot:
+    admin:
+      turbine:
+        location: sky-monitor
+      routes:
+        endpoints: env,metrics,trace,dump,jolokia,info,configprops,trace,logfile,refresh,flyway,liquibase,heapdump,loggers,auditevents,hystrix.stream,turbine.stream
+
+turbine:
+    app-config: sky-zuul #收集监控信息的服务名
+    combine-host-port: true
+    cluster-name-expression: new String('default') #集群名称

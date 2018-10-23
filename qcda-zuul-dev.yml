@@ -1,0 +1,71 @@
+server:
+  port: 9999
+
+spring:
+  zipkin:
+    rabbitmq:
+      queue: zipkin
+  sleuth:
+    sampler:
+      percentage: 0.2
+
+zuul:
+  ribbon:
+    eager-load:
+      enabled: true
+      clients: sky-auth,sky-record-api,tx-manager
+  ignoredServices: '*'
+  host:
+    connect-timeout-millis: 10000
+    socket-timeout-millis: 10000
+  routes:
+    sky-auth:
+      path: /auth/**
+      serviceId: sky-auth
+      stripPrefix: true
+      sensitiveHeaders:
+    sky-record-api:
+      path: /record/**
+      serviceId: sky-record-api
+      stripPrefix: true
+      sensitiveHeaders:
+    tx-manager:
+      path: /lcn/**
+      serviceId: tx-manager
+      stripPrefix: true
+      sensitiveHeaders:      
+  ratelimit:
+    key-prefix: sky-ratelimite
+    enabled: true
+    repository: REDIS
+    behind-proxy: true
+    policies:
+      sky-restservices-api:
+        limit: 100
+        quota: 100
+        refresh-interval: 3
+
+security:
+  validate:
+    code: false
+    preview: false
+  sessions: stateless
+  oauth2:
+    client:
+      client-id: sky
+      client-secret: sky
+    resource:
+      jwt:
+         key-uri: ${security.auth.server}/oauth/token_key #解析jwt令牌所需要密钥的地址
+
+ignore:
+  urls:
+    - /lcn/**    
+    - /auth/**
+    - /swagger-resources/**
+    - /swagger-ui.html
+    - /*/v2/api-docs
+    - /swagger/api-docs
+    - /webjars/**
+  clients:
+    - app
