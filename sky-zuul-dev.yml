@@ -44,6 +44,19 @@ zuul:
         limit: 100
         quota: 100
         refresh-interval: 3
+        
+security:
+  validate:
+    code: false
+    preview: false
+  sessions: stateless
+  oauth2:
+    client:
+      client-id: sky
+      client-secret: sky
+    resource:
+      jwt:
+         key-uri: ${security.auth.server}/oauth/token_key #解析jwt令牌所需要密钥的地址
 
 ignore:
   urls:
