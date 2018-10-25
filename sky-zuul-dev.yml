@@ -25,7 +25,7 @@ zuul:
       stripPrefix: true
       sensitiveHeaders:
     sky-record-api:
-      path: /record/**
+      path: /restApi/**
       serviceId: sky-record-api
       stripPrefix: true
       sensitiveHeaders:
