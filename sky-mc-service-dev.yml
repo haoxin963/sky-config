@@ -1,0 +1,9 @@
+server:
+  port: 4050
+
+sms:
+  aliyun:
+    accessKey: accessKey
+    secretKey: secretKey
+    channels:
+      loginCodeChannel: loginCodeChannel
