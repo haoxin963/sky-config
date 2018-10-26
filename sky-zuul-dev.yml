@@ -58,6 +58,7 @@ security:
 ignore:
   urls:
     - /lcn/**    
+    - /restApi/record/registerUser
     - /auth/**
     - /swagger-resources/**
     - /swagger-ui.html
