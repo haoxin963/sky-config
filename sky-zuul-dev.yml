@@ -46,9 +46,6 @@ zuul:
         refresh-interval: 3
         
 security:
-  validate:
-    code: false
-    preview: false
   sessions: stateless
   oauth2:
     client:
