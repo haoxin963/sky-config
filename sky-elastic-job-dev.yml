@@ -3,10 +3,12 @@ server:
 
 spring:
   datasource:
-    dataSourceClassName: com.mysql.jdbc.Driver
-    username: sky
-    password: sky123
-    url: jdbc:mysql://localhost:3306/sky_base?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false
+    druid:
+      log:
+        dataSourceClassName: com.mysql.jdbc.Driver
+        username: sky
+        password: sky123
+        url: jdbc:mysql://localhost:3306/sky_base?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false
   
 elasticJob:
   zk:
