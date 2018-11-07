@@ -13,7 +13,7 @@ zuul:
   ribbon:
     eager-load:
       enabled: true
-      clients: sky-auth,sky-record-api,tx-manager
+      clients: sky-auth,sky-record-api,tx-manager,sky-rbac-service
   ignoredServices: '*'
   host:
     connect-timeout-millis: 10000
@@ -29,6 +29,11 @@ zuul:
       serviceId: sky-record-api
       stripPrefix: true
       sensitiveHeaders:
+    sky-rbac-service:
+      path: /rbac/**
+      serviceId: sky-rbac-service
+      stripPrefix: true
+      sensitiveHeaders:      
     tx-manager:
       path: /lcn/**
       serviceId: tx-manager
